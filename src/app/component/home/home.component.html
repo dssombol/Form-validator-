@@ -1,0 +1,38 @@
+<div class="container"><br>
+<form [formGroup]="formgroups" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="formGroupExampleInput">Example label</label>
+    <input type="text" class="form-control"  placeholder="Example input" formControlName="fname" [ngClass]="{'is-invalid': submitted && f.fname.errors }" />
+    <div *ngIf="submitted && f.fname.errors" class="invalid-feedback">
+      <div *ngIf="f.fname.errors.required">Please input firtname</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Another label</label>
+    <input type="text" class="form-control"  placeholder="Another input" formControlName="lname" [ngClass]="{'is-invalid':submitted && f.lname.errors}"/>
+    <div *ngIf="submitted && f.lname.errors" class="invalid-feedback">
+      <div *ngIf="f.lname.errors.required">Please input Last Name</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Password</label>
+    <input type="password" class="form-control"  placeholder="Another input" formControlName="pword" [ngClass]="{'is-invalid':submitted && f.pword.errors}"/>
+    <div *ngIf="submitted && f.pword.errors" class="invalid-feedback">
+        <div *ngIf="f.pword.errors.required">Password is required</div>
+        <div *ngIf="f.pword.errors.minlength">Password must be at least 6 characters</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Confirm Password</label>
+    <input type="password" formControlName="cword" class="form-control" [ngClass]="{'is-invalid': submitted && f.cword.errors }" />
+    <div *ngIf="submitted && f.cword.errors" class="invalid-feedback">
+        <div *ngIf="f.cword.errors.required">Confirm Password is required</div>
+        <div *ngIf="f.cword.errors.mustMatch">Passwords must match</div>
+    </div>
+</div>
+  <div class="form-group">
+    <button class="btn btn-primary">Register</button>
+</div>
+</form>
+</div>
